@@ -41,18 +41,18 @@ namespace Catalog.API.Controllers
             return Ok(product);
         }
 
-        [HttpGet("products/{category}", Name = "GetProductsByCategory")]
+        [HttpGet("products/category/{category}", Name = "GetProductsByCategory")]
         [ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<Product>>> GetProductsByCategory(string category)
         {
             return Ok(await _productRepository.GetProductByCategory(category));
         }
 
-        [HttpGet("products/{name}", Name = "GetProductsByName")]
+        [HttpGet("products/name/{name}", Name = "GetProductsByName")]
         [ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<Product>>> GetProductsByName(string name)
         {
-            return Ok(await _productRepository.GetProductByCategory(name));
+            return Ok(await _productRepository.GetProductByName(name));
         }
 
         [HttpPost("products", Name = "CreateProduct")]
